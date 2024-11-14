@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">gym</string>
+    <string name="txtGymCpa">CPA GYM</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="btnRegistrarse">Registrarse</string>
+    <string name="linkOlvido_su_contrasenia">Olvido su contraseña??</string>
+    <string name="textUsuario">Usuario</string>
+    <string name="textContrasenia">Contraseña</string>
+    <string name="btnRegistrar">Registrar</string>
+    <string name="correo_electronico_email">Correo electrónico / Email</string>
+    <string name="nombre_usuario">Nombre Usuario</string>
+    <string name="contrasenia">Contraseña</string>
+    <string name="repite_la_contrasenia">Repite la contraseña</string>
+    <string name="nuevo_usuario">Nuevo Usuario</string>
+    <string name="abrir_torno">Abrir torno</string>
+    <string name="seleccionar_ejercicio">Seleccionar ejercicio</string>
+    <string name="hola">Bienvenido</string>
+    <string name="guion">-</string>
+</resources>

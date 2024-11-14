@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondoandroid"
+    tools:context=".MainActivity"
+    tools:ignore="VisualLintBounds"
+    tools:layout_editor_absoluteX="-15dp"
+    tools:layout_editor_absoluteY="-8dp">
+
+    <Button
+        android:id="@+id/btmSelecEjer"
+        android:layout_width="257dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/seleccionar_ejercicio"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btmTorno"
+        tools:ignore="TextSizeCheck" />
+
+    <ImageButton
+        android:id="@+id/imageButtonUnlogg"
+        android:layout_width="74dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/unloog_fondo_removebg_preview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/imageButtonUser"
+        android:layout_width="69dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/personaicon_removebg_preview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+    <CalendarView
+        android:id="@+id/calendarView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="152dp"
+        android:background="#7AE7E7E7"
+        android:foregroundGravity="fill_horizontal|top"
+        android:longClickable="false"
+        android:theme="@style/Base.Theme.Gym"
+        android:visibility="visible"
+        android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:weekNumberColor="@color/white"
+        android:weekSeparatorLineColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="btmTorno,imageView" />
+
+    <Button
+        android:id="@+id/btmTorno"
+        android:layout_width="257dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/abrir_torno"
+        android:textAlignment="viewStart"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView2" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="64dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="548dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/_448535_removebg_preview"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/textViewNomUsu"
+        android:layout_width="197dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="monospace"
+        android:text="@string/guion"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewHola"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints,TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/textViewHola"
+        android:layout_width="168dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="monospace"
+        android:text="@string/hola"
+        android:textAlignment="textEnd"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/textViewNomUsu"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
