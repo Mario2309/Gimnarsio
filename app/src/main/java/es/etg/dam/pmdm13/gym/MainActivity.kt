@@ -12,7 +12,7 @@ import es.etg.dam.pmdm13.gym.preferencias.LeerPreferencia
 class MainActivity : AppCompatActivity(){
     companion object{
         //Constante para el paso de extras
-        const val EXTRA_USUARIO = "Inicio:Usuario"
+        const val EXTRA_USUARIO = "Inicio:usuario"
     }
 
     @SuppressLint("MissingInflatedId", "CutPasteId")
