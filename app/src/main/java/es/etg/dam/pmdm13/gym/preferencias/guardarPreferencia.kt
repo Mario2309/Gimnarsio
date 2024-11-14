@@ -15,7 +15,7 @@ class GuardarPreferencia(private val context: Context): Preferencia {
     }
 
     override fun leer(): String? {
-        TODO("Not yet implemented")
+        return null
     }
 
 }

@@ -10,7 +10,7 @@ private const val VACIO = ""
 
 class LeerPreferencia(private val context: Context): Preferencia {
     override fun guardar(nombre: String) {
-        TODO("Not yet implemented")
+
     }
 
     override fun leer(): String? {
