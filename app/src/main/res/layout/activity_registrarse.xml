@@ -8,6 +8,17 @@
     android:background="@drawable/fondoandroid"
     tools:context=".Registrarse">
 
+    <Button
+        android:id="@+id/btnRegistrar2"
+        android:layout_width="121dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="700dp"
+        android:text="@string/btnRegistrar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,VisualLintBounds" />
+
     <ImageButton
         android:id="@+id/imageButtonChrome"
         android:layout_width="70dp"
@@ -150,17 +161,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextContraseña"
         tools:ignore="TextContrastCheck" />
-
-    <Button
-        android:id="@+id/btnRegistrar"
-        android:layout_width="121dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="752dp"
-        android:text="@string/btnRegistrar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints,VisualLintBounds" />
 
     <ImageButton
         android:id="@+id/imageButtonFacebook"

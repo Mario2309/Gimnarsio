@@ -3,6 +3,7 @@ package es.etg.dam.pmdm13.gym
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -44,7 +45,7 @@ class Registrarse : AppCompatActivity() {
         
 
         val volverMain = Intent(this, MainActivity::class.java)
-        val btnRegistrar:Button = findViewById(R.id.btnRegistrar)
+        val btnRegistrar:Button = findViewById(R.id.btnRegistrar2)
         val btnFlecha:ImageButton = findViewById(R.id.flechaVolver)
         val text = "Error 404!! Not Fount!!"
         val duration = Toast.LENGTH_LONG
@@ -65,22 +66,24 @@ class Registrarse : AppCompatActivity() {
         }
 
         btnRegistrar.setOnClickListener {
-            startActivity(volverMain)
-            enviarInfo()
+            guardar()
         }
 
 
     }
 
-    fun guardar() {
-        val nombre: String = binding.editTextUsuarioNuevo.text.toString()
-        val correo: String = binding.editTextCorreo.text.toString()
+    private fun guardar() {
+        val nombre = findViewById<EditText>(R.id.editTextUsuarioNuevo).text
+        val correo = findViewById<EditText>(R.id.editTextCorreo).text
 
-        val usuario = UserEntity(0, nombre, correo)
+        val usuario = UserEntity(0, nombre.toString(), correo.toString());
 
         val userDao = database.userDao()
 
-        userDao.insert(usuario)
+        CoroutineScope(Dispatchers.IO).launch {
+            userDao.insert(usuario)
+        }
+
     }
 
     private fun enviarInfo() {
