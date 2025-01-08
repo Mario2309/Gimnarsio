@@ -6,27 +6,42 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import es.etg.dam.pmdm13.gym.MainActivity.Companion.EXTRA_USUARIO
+import androidx.room.Room
+import es.etg.dam.pmdm13.gym.data.UserDatabase
+import es.etg.dam.pmdm13.gym.data.UserEntity
+import es.etg.dam.pmdm13.gym.databinding.ActivityRegistrarseBinding
 import es.etg.dam.pmdm13.gym.preferencias.GuardarPreferencia
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class Registrarse : AppCompatActivity() {
 
     companion object{
         //Constante para el paso de extras
         const val EXTRA_USUARIO = "MainActivity:Usuario"
+
+        lateinit var database: UserDatabase
+        const val DATABASE_USER = "usuario-db"
     }
+
+    private lateinit var binding: ActivityRegistrarseBinding
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        binding = ActivityRegistrarseBinding.inflate(layoutInflater)
+
         setContentView(R.layout.activity_registrarse)
+
+        Registrarse.database = Room.databaseBuilder(this,
+                                                        UserDatabase::class.java,
+                                                            DATABASE_USER).build()
+        
 
         val volverMain = Intent(this, MainActivity::class.java)
         val btnRegistrar:Button = findViewById(R.id.btnRegistrar)
@@ -52,12 +67,21 @@ class Registrarse : AppCompatActivity() {
         btnRegistrar.setOnClickListener {
             startActivity(volverMain)
             enviarInfo()
-
         }
 
 
     }
-    
+
+    fun guardar() {
+        val nombre: String = binding.editTextUsuarioNuevo.text.toString()
+        val correo: String = binding.editTextCorreo.text.toString()
+
+        val usuario = UserEntity(0, nombre, correo)
+
+        val userDao = database.userDao()
+
+        userDao.insert(usuario)
+    }
 
     private fun enviarInfo() {
         val textoCorreo = findViewById<EditText>(R.id.editTextCorreo).text
