@@ -51,9 +51,6 @@ class Inicio : AppCompatActivity() {
             toast.show()
         }
 
-        binding.btmTorno.setOnClickListener {
-//            abrirTorno()
-        }
 
         binding.imageButtonUser.setOnClickListener {
             toast.show()
@@ -61,22 +58,31 @@ class Inicio : AppCompatActivity() {
 
     }
 
-//    private fun abrirTorno(){
-//
-//        supportFragmentManager.commit {
-//            setReorderingAllowed(true)
-//
-//            if (!tornoAbierto){
-//                replace<codQr>(binding.fragmentContainerViewQr.id)
-//                replace<Calendario>(binding.fragmentContainerViewCalendario.id)
-//            } else {
-//                replace<Calendario>(binding.fragmentContainerViewCalendario.id)
-//                replace<codQr>(binding.fragmentContainerViewQr.id)
-//            }
-//
-//            tornoAbierto = !tornoAbierto
-//        }
-//    }
+    fun abrirTorno(view: View){
+
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+
+            binding.fragmentContainerViewQr.visibility = View.VISIBLE
+            binding.fragmentContainerViewCalendario.visibility = View.INVISIBLE
+
+            binding.btnClose.visibility = View.VISIBLE
+            binding.btmTorno.visibility = View.INVISIBLE
+        }
+    }
+
+    fun cerrarTorno(view: View){
+
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+
+            binding.fragmentContainerViewCalendario.visibility = View.VISIBLE
+            binding.fragmentContainerViewQr.visibility = View.INVISIBLE
+
+            binding.btnClose.visibility = View.INVISIBLE
+            binding.btmTorno.visibility = View.VISIBLE
+        }
+    }
 
     private fun actualizarSaludo() {
         val leerPreferencia = LeerPreferencia(this)
@@ -85,15 +91,5 @@ class Inicio : AppCompatActivity() {
         if (nombre != null) {
             val textoNombre = binding.textViewNomUsu.setText((nombre))
         }
-    }
-
-    private fun mostrarNombreUsuario() {
-        val usuario = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getParcelableExtra(MainActivity.EXTRA_USUARIO, Usuario::class.java)
-        } else {
-            intent.getParcelableExtra<Usuario>(MainActivity.EXTRA_USUARIO)
-        }
-        val toat = Toast.makeText(this, usuario.toString(), Toast.LENGTH_LONG)
-        toat.show()
     }
 }
