@@ -3,11 +3,13 @@ package es.etg.dam.pmdm13.gym.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity (tableName = "usuarios")
-data class UserEntity(
+@Entity(tableName = "correos")
+data class CorreoEntity(
 
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0,
-    var nombre:String = ""
+    val id: Long = 0,
+    val correo: String = "",
+    val usuario: Long = 0
 
 )
+

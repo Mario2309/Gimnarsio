@@ -4,12 +4,15 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
+import es.etg.dam.pmdm13.gym.data.CorreoEntity
+import es.etg.dam.pmdm13.gym.data.CorreoUserEntity
 import es.etg.dam.pmdm13.gym.data.UserDatabase
 import es.etg.dam.pmdm13.gym.data.UserEntity
 import es.etg.dam.pmdm13.gym.databinding.ActivityRegistrarseBinding
@@ -17,6 +20,10 @@ import es.etg.dam.pmdm13.gym.preferencias.GuardarPreferencia
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
+private const val ERROR_404_NOT_FOUNT_ = "Error 404!! Not Fount!!"
+
+private const val TODOS_CARGADO = "Todo cargado"
 
 class Registrarse : AppCompatActivity() {
 
@@ -37,7 +44,7 @@ class Registrarse : AppCompatActivity() {
 
         binding = ActivityRegistrarseBinding.inflate(layoutInflater)
 
-        setContentView(R.layout.activity_registrarse)
+        setContentView(binding.root)
 
         Registrarse.database = Room.databaseBuilder(this,
                                                         UserDatabase::class.java,
@@ -45,48 +52,60 @@ class Registrarse : AppCompatActivity() {
         
 
         val volverMain = Intent(this, MainActivity::class.java)
-        val btnRegistrar:Button = findViewById(R.id.btnRegistrar2)
-        val btnFlecha:ImageButton = findViewById(R.id.flechaVolver)
-        val text = "Error 404!! Not Fount!!"
+        val text = ERROR_404_NOT_FOUNT_
         val duration = Toast.LENGTH_LONG
         val toast = Toast.makeText(this, text, duration)
-        val btnChrome:ImageButton = findViewById(R.id.imageButtonChrome)
-        val btnFacebook:ImageButton = findViewById(R.id.imageButtonFacebook)
 
-        btnChrome.setOnClickListener {
+
+        binding.imageButtonChrome.setOnClickListener {
             toast.show()
         }
 
-        btnFacebook.setOnClickListener {
+
+        binding.imageButtonFacebook.setOnClickListener {
             toast.show()
         }
 
-        btnFlecha.setOnClickListener {
+        binding.flechaVolver.setOnClickListener {
             startActivity(volverMain)
         }
 
-        btnRegistrar.setOnClickListener {
+        binding.btnRegistrar2.setOnClickListener {
             startActivity(volverMain)
             enviarInfo()
             guardar()
         }
 
-
     }
 
     private fun guardar() {
-        val nombre = findViewById<EditText>(R.id.editTextUsuarioNuevo).text
-        val correo = findViewById<EditText>(R.id.editTextCorreo).text
+        val nombre = binding.editTextUsuarioNuevo.text
+        val correos = binding.editTextCorreo.text
 
-        val usuario = UserEntity(0, nombre.toString(), correo.toString());
+        var userId: Long = 0
+
+        val usuario = UserEntity(0, nombre.toString());
+
+        var lista: List<CorreoUserEntity>
 
         val userDao = database.userDao()
+        val correoDao = database.correoDao()
 
         CoroutineScope(Dispatchers.IO).launch {
+
             userDao.insert(usuario)
+
+            val correo = CorreoEntity(0, correos.toString(), userId)
+
+            correoDao.insertCorreo(correo)
+
+            lista = userDao.getAll()
         }
 
+        Toast.makeText(this, TODOS_CARGADO,Toast.LENGTH_LONG).show()
+
     }
+
 
     private fun enviarInfo() {
         val textoCorreo = findViewById<EditText>(R.id.editTextCorreo).text

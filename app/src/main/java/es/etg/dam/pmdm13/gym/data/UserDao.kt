@@ -5,16 +5,20 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 
 @Dao
 interface UserDao {
 
-    @Query ("SELECT id, nombre, correo FROM usuarios")
-    suspend fun getAll(): List<UserEntity>
+    @Transaction
+    @Query ("SELECT * FROM usuarios")
+    suspend fun getAll(): List<CorreoUserEntity>
 
+    @Transaction
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(usuario: UserEntity)
 
+    @Transaction
     @Delete
     suspend fun delete(usuario: UserEntity)
 }
