@@ -66,6 +66,8 @@ class Registrarse : AppCompatActivity() {
         }
 
         btnRegistrar.setOnClickListener {
+            startActivity(volverMain)
+            enviarInfo()
             guardar()
         }
 
