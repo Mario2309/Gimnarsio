@@ -16,4 +16,6 @@
     <string name="seleccionar_ejercicio">Seleccionar ejercicio</string>
     <string name="hola">Bienvenido</string>
     <string name="guion">-</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
