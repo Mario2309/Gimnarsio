@@ -16,9 +16,12 @@ import es.etg.dam.pmdm13.gym.preferencias.LeerPreferencia
 import android.Manifest
 import androidx.core.app.ActivityCompat
 
+private const val CONCEDA_PERMISOS_EN_AJUSTES = "Conceda permisos en ajustes"
+private const val ACCESO_A_LA_FUNCIONALIDAD_UNA_VEZ_ACEPTADO_EL_PERMISO = "Acceso a la funcionalidad una vez aceptado el permiso"
+
 class MainActivity : AppCompatActivity(){
+
     companion object{
-        const val EXTRA_USUARIO = "Inicio:Usuario"
         const val CODIGO_RESPUESTA_PERMISO_LEER_CALENDARIO = 0
     }
 
@@ -72,19 +75,17 @@ class MainActivity : AppCompatActivity(){
                             Manifest.permission.READ_CALENDAR)
                             != PackageManager.PERMISSION_GRANTED){
             preguntarPermisoLecturaCalendario()
-        } else {
-            Toast.makeText(this,"Acceso a la funcionalidad", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun preguntarPermisoLecturaCalendario() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                                         Manifest.permission.READ_CALENDAR)){
-            Toast.makeText(this, "Conceda permisos en ajustes", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, CONCEDA_PERMISOS_EN_AJUSTES, Toast.LENGTH_SHORT).show()
         } else {
             ActivityCompat.requestPermissions(this,
                 arrayOf(Manifest.permission.READ_CALENDAR),
-                Companion.CODIGO_RESPUESTA_PERMISO_LEER_CALENDARIO
+                CODIGO_RESPUESTA_PERMISO_LEER_CALENDARIO
             )
         }
     }
@@ -98,9 +99,10 @@ class MainActivity : AppCompatActivity(){
         when (requestCode){
             CODIGO_RESPUESTA_PERMISO_LEER_CALENDARIO -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    Toast.makeText(this,"Acceso a la funcionalidad una vez aceptado el permiso", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,
+                        ACCESO_A_LA_FUNCIONALIDAD_UNA_VEZ_ACEPTADO_EL_PERMISO, Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this, "Conceda permisos en ajustes", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, CONCEDA_PERMISOS_EN_AJUSTES, Toast.LENGTH_SHORT).show()
                 }
             }
         }
