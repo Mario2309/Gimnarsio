@@ -14,10 +14,12 @@ import es.etg.dam.pmdm13.gym.databinding.ActivityMainBinding
 import es.etg.dam.pmdm13.gym.preferencias.GuardarPreferencia
 import es.etg.dam.pmdm13.gym.preferencias.LeerPreferencia
 import android.Manifest
+import androidx.core.app.ActivityCompat
 
 class MainActivity : AppCompatActivity(){
     companion object{
         const val EXTRA_USUARIO = "Inicio:Usuario"
+        const val CODIGO_RESPUESTA_PERMISO_LEER_CALENDARIO = 0
     }
 
     private lateinit var binding: ActivityMainBinding
@@ -32,7 +34,7 @@ class MainActivity : AppCompatActivity(){
 
         actualizarNombreUsuario()
 
-        comprobarPermisoContactos()
+        comprobarPermisoLecturaCalendario()
 
     }
 
@@ -65,18 +67,43 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
-    private fun comprobarPermisoContactos(){
+    private fun comprobarPermisoLecturaCalendario(){
         if (ContextCompat.checkSelfPermission(this,
-                            Manifest.permission.READ_CONTACTS)
+                            Manifest.permission.READ_CALENDAR)
                             != PackageManager.PERMISSION_GRANTED){
-            //preguntarPermisoContactos()
+            preguntarPermisoLecturaCalendario()
         } else {
             Toast.makeText(this,"Acceso a la funcionalidad", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun preguntarPermisoContactos() {
-        TODO("Not yet implemented")
+    private fun preguntarPermisoLecturaCalendario() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                                        Manifest.permission.READ_CALENDAR)){
+            Toast.makeText(this, "Conceda permisos en ajustes", Toast.LENGTH_SHORT).show()
+        } else {
+            ActivityCompat.requestPermissions(this,
+                arrayOf(Manifest.permission.READ_CALENDAR),
+                Companion.CODIGO_RESPUESTA_PERMISO_LEER_CALENDARIO
+            )
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode){
+            CODIGO_RESPUESTA_PERMISO_LEER_CALENDARIO -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    Toast.makeText(this,"Acceso a la funcionalidad una vez aceptado el permiso", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Conceda permisos en ajustes", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
 }
