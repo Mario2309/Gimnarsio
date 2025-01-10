@@ -17,6 +17,7 @@
         android:layout_height="77dp"
         android:layout_marginStart="76dp"
         android:layout_marginTop="44dp"
+        android:onClick="mensajeError"
         android:text="@string/seleccionar_ejercicio"
         android:textAlignment="center"
         android:textSize="22sp"
@@ -31,6 +32,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/unloog_fondo_removebg_preview"
+        android:onClick="volverLogin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
@@ -42,6 +44,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/personaicon_removebg_preview"
+        android:onClick="mensajeError"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />

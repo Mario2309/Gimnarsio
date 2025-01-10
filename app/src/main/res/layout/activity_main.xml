@@ -54,6 +54,7 @@
         android:layout_height="57dp"
         android:layout_marginStart="128dp"
         android:layout_marginTop="12dp"
+        android:onClick="avanzarActRegistrarse"
         android:text="@string/btnRegistrarse"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnIniciar" />
@@ -64,6 +65,7 @@
         android:layout_height="57dp"
         android:layout_marginStart="128dp"
         android:layout_marginTop="24dp"
+        android:onClick="avanzarInicio"
         android:text="@string/iniciar_sesion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />

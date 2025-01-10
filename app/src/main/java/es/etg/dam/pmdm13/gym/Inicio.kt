@@ -20,13 +20,12 @@ import es.etg.dam.pmdm13.gym.databinding.ActivityInicioBinding
 import es.etg.dam.pmdm13.gym.preferencias.LeerPreferencia
 
 
+private const val ERROR_ = "Error!!"
 
 @Suppress("DEPRECATION")
 class Inicio : AppCompatActivity() {
 
     private lateinit var binding: ActivityInicioBinding
-
-    private var tornoAbierto = true
 
     @SuppressLint("MissingInflatedId", "ShowToast")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,26 +35,16 @@ class Inicio : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        val volverLogin = Intent(this, MainActivity::class.java)
-        val mensaje = "Error!!"
-        val duration = Toast.LENGTH_LONG
-        val toast = Toast.makeText(this, mensaje,duration)
-
         actualizarSaludo()
 
-        binding.imageButtonUnlogg.setOnClickListener {
-            startActivity(volverLogin)
-        }
+    }
 
-        binding.btmSelecEjer.setOnClickListener{
-            toast.show()
-        }
+    fun mensajeError(view: View){
+        Toast.makeText(this, ERROR_,Toast.LENGTH_LONG).show()
+    }
 
-
-        binding.imageButtonUser.setOnClickListener {
-            toast.show()
-        }
-
+    fun volverLogin(view: View){
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     fun abrirTorno(view: View){
@@ -89,7 +78,7 @@ class Inicio : AppCompatActivity() {
         val nombre = leerPreferencia.leer()
 
         if (nombre != null) {
-            val textoNombre = binding.textViewNomUsu.setText((nombre))
+            binding.textViewNomUsu.text = (nombre)
         }
     }
 }
