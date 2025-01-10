@@ -2,14 +2,18 @@ package es.etg.dam.pmdm13.gym
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import es.etg.dam.pmdm13.gym.databinding.ActivityMainBinding
 import es.etg.dam.pmdm13.gym.preferencias.GuardarPreferencia
 import es.etg.dam.pmdm13.gym.preferencias.LeerPreferencia
+import android.Manifest
 
 class MainActivity : AppCompatActivity(){
     companion object{
@@ -28,6 +32,7 @@ class MainActivity : AppCompatActivity(){
 
         actualizarNombreUsuario()
 
+        comprobarPermisoContactos()
 
     }
 
@@ -58,6 +63,20 @@ class MainActivity : AppCompatActivity(){
         if (nombre != null) {
             binding.editTextUsuario.setText((nombre))
         }
+    }
+
+    private fun comprobarPermisoContactos(){
+        if (ContextCompat.checkSelfPermission(this,
+                            Manifest.permission.READ_CONTACTS)
+                            != PackageManager.PERMISSION_GRANTED){
+            //preguntarPermisoContactos()
+        } else {
+            Toast.makeText(this,"Acceso a la funcionalidad", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun preguntarPermisoContactos() {
+        TODO("Not yet implemented")
     }
 
 }
