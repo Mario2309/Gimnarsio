@@ -1,20 +1,18 @@
 package es.etg.dam.pmdm13.gym
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import es.etg.dam.pmdm13.gym.databinding.ActivityMainBinding
 import es.etg.dam.pmdm13.gym.preferencias.GuardarPreferencia
 import es.etg.dam.pmdm13.gym.preferencias.LeerPreferencia
-import android.Manifest
-import androidx.core.app.ActivityCompat
 
 private const val CONCEDA_PERMISOS_EN_AJUSTES = "Conceda permisos en ajustes"
 private const val ACCESO_A_LA_FUNCIONALIDAD_UNA_VEZ_ACEPTADO_EL_PERMISO = "Acceso a la funcionalidad una vez aceptado el permiso"
