@@ -33,7 +33,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/personaicon_removebg_preview"
-        android:onClick="mensajeError"
+        android:onClick="msgError"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
@@ -51,7 +51,7 @@
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/idRVCourses"
+        android:id="@+id/rvGrid"
         android:layout_width="356dp"
         android:layout_height="511dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="gruposMusculares">
+        <item>Pecho</item>
+        <item>Espalda</item>
+        <item>Glúteos</item>
+        <item>Cuádriceps</item>
+        <item>Bíceps</item>
+        <item>Tríceps</item>
+        <item>Hombros</item>
+        <item>Pantorrillas</item>
+    </string-array>
+</resources>
