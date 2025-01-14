@@ -3,11 +3,7 @@ package es.etg.dam.pmdm13.gym
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
@@ -17,7 +13,6 @@ import es.etg.dam.pmdm13.gym.data.UserDatabase
 import es.etg.dam.pmdm13.gym.data.UserEntity
 import es.etg.dam.pmdm13.gym.databinding.ActivityRegistrarseBinding
 import es.etg.dam.pmdm13.gym.preferencias.EjecutarPreferencias
-import es.etg.dam.pmdm13.gym.preferencias.GuardarPreferencia
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
