@@ -16,6 +16,7 @@ import es.etg.dam.pmdm13.gym.data.CorreoUserEntity
 import es.etg.dam.pmdm13.gym.data.UserDatabase
 import es.etg.dam.pmdm13.gym.data.UserEntity
 import es.etg.dam.pmdm13.gym.databinding.ActivityRegistrarseBinding
+import es.etg.dam.pmdm13.gym.preferencias.EjecutarPreferencias
 import es.etg.dam.pmdm13.gym.preferencias.GuardarPreferencia
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,7 +29,6 @@ private const val TODOS_CARGADO = "Todo cargado"
 class Registrarse : AppCompatActivity() {
 
     companion object{
-        //Constante para el paso de extras
         const val EXTRA_USUARIO = "MainActivity:Usuario"
 
         lateinit var database: UserDatabase
@@ -78,6 +78,7 @@ class Registrarse : AppCompatActivity() {
 
     }
 
+    @Suppress("ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE")
     private fun guardar() {
         val nombre = binding.editTextUsuarioNuevo.text
         val correos = binding.editTextCorreo.text
@@ -115,8 +116,8 @@ class Registrarse : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         val usuario = Usuario(textoCorreo.toString(), textoUsuario.toString(), textoContrasenia.toString())
 
-        val guardarPreferencia = GuardarPreferencia(this)
-        guardarPreferencia.guardar(textoUsuario.toString())
+        val ejecutarPreferencia = EjecutarPreferencias(this)
+        ejecutarPreferencia.guardar(textoUsuario.toString())
 
         intent.putExtra(EXTRA_USUARIO, usuario)
         startActivity(intent)

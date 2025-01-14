@@ -11,8 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import es.etg.dam.pmdm13.gym.databinding.ActivityMainBinding
-import es.etg.dam.pmdm13.gym.preferencias.GuardarPreferencia
-import es.etg.dam.pmdm13.gym.preferencias.LeerPreferencia
+import es.etg.dam.pmdm13.gym.preferencias.EjecutarPreferencias
 
 private const val CONCEDA_PERMISOS_EN_AJUSTES = "Conceda permisos en ajustes"
 private const val ACCESO_A_LA_FUNCIONALIDAD_UNA_VEZ_ACEPTADO_EL_PERMISO = "Acceso a la funcionalidad una vez aceptado el permiso"
@@ -50,8 +49,8 @@ class MainActivity : AppCompatActivity(){
 
     private fun almacenarPreferencia() {
         val nombreUsuario = binding.editTextUsuario.text.toString()
-        val guardarPreferencia = GuardarPreferencia(this)
-        guardarPreferencia.guardar(nombreUsuario)
+        val ejecutarPreferencia = EjecutarPreferencias(this)
+        ejecutarPreferencia.guardar(nombreUsuario)
     }
 
     fun avanzarActRegistrarse(view: View){
@@ -60,8 +59,8 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun actualizarNombreUsuario() {
-        val leerPreferencia = LeerPreferencia(this)
-        val nombre = leerPreferencia.leer()
+        val ejecutarPreferencia = EjecutarPreferencias(this)
+        val nombre = ejecutarPreferencia.leer()
 
         if (nombre != null) {
             binding.editTextUsuario.setText((nombre))
