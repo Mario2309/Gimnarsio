@@ -38,6 +38,10 @@ class Inicio : AppCompatActivity() {
         startActivity(Intent(this, MainActivity::class.java))
     }
 
+    fun avanzarSGM(view: View){
+        startActivity(Intent(this, seleccionGrupoMuscular::class.java))
+    }
+
     fun abrirTorno(view: View){
 
         supportFragmentManager.commit {
