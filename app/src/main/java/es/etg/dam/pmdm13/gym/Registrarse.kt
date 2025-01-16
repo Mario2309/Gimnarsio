@@ -41,7 +41,7 @@ class Registrarse : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        Registrarse.database = Room.databaseBuilder(this,
+        database = Room.databaseBuilder(this,
                                                         UserDatabase::class.java,
                                                             DATABASE_USER).build()
         
@@ -78,7 +78,7 @@ class Registrarse : AppCompatActivity() {
         val nombre = binding.editTextUsuarioNuevo.text
         val correos = binding.editTextCorreo.text
 
-        var userId: Long = 0
+        val userId: Long = 0
 
         val usuario = UserEntity(0, nombre.toString());
 
