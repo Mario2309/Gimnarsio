@@ -19,7 +19,7 @@ private const val ACCESO_A_LA_FUNCIONALIDAD_UNA_VEZ_ACEPTADO_EL_PERMISO = "Acces
 class MainActivity : AppCompatActivity(){
 
     companion object{
-        const val CODIGO_RESPUESTA_PERMISO_LEER_CALENDARIO = 0
+        const val CODIGO_RESPUESTA_PERMISO_INTERNET = 0
     }
 
     private lateinit var binding: ActivityMainBinding
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(){
 
         actualizarNombreUsuario()
 
-        comprobarPermisoLecturaCalendario()
+        comprobarPermisoInternet()
 
     }
 
@@ -67,22 +67,22 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
-    private fun comprobarPermisoLecturaCalendario(){
+    private fun comprobarPermisoInternet(){
         if (ContextCompat.checkSelfPermission(this,
-                            Manifest.permission.READ_CALENDAR)
+                            Manifest.permission.INTERNET)
                             != PackageManager.PERMISSION_GRANTED){
-            preguntarPermisoLecturaCalendario()
+            preguntarPermisoInternet()
         }
     }
 
-    private fun preguntarPermisoLecturaCalendario() {
+    private fun preguntarPermisoInternet() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                                        Manifest.permission.READ_CALENDAR)){
+                                            Manifest.permission.INTERNET)){
             Toast.makeText(this, CONCEDA_PERMISOS_EN_AJUSTES, Toast.LENGTH_SHORT).show()
         } else {
             ActivityCompat.requestPermissions(this,
-                arrayOf(Manifest.permission.READ_CALENDAR),
-                CODIGO_RESPUESTA_PERMISO_LEER_CALENDARIO
+                arrayOf(Manifest.permission.INTERNET),
+                CODIGO_RESPUESTA_PERMISO_INTERNET
             )
         }
     }
@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity(){
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode){
-            CODIGO_RESPUESTA_PERMISO_LEER_CALENDARIO -> {
+            CODIGO_RESPUESTA_PERMISO_INTERNET -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     Toast.makeText(this,
                         ACCESO_A_LA_FUNCIONALIDAD_UNA_VEZ_ACEPTADO_EL_PERMISO, Toast.LENGTH_SHORT).show()
