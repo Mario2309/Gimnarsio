@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondoandroid"
-    tools:context=".MainActivity"
+    tools:context=".ui.view.MainActivity"
     tools:ignore="VisualLintBounds"
     tools:layout_editor_absoluteX="-15dp"
     tools:layout_editor_absoluteY="-8dp">

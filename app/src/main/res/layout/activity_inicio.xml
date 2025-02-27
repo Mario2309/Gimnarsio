@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondoandroid"
-    tools:context=".MainActivity"
+    tools:context=".ui.view.MainActivity"
     tools:ignore="VisualLintBounds"
     tools:layout_editor_absoluteX="-15dp"
     tools:layout_editor_absoluteY="-8dp">
@@ -132,14 +132,14 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerViewCalendario"
-            android:name="es.etg.dam.pmdm13.gym.fragmentos.Calendario"
+            android:name="es.etg.dam.pmdm13.gym.ui.view.CalendarioFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="visible" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerViewQr"
-            android:name="es.etg.dam.pmdm13.gym.fragmentos.codQr"
+            android:name="es.etg.dam.pmdm13.gym.ui.view.codQrFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="invisible" />
